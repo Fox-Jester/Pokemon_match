@@ -1,0 +1,349 @@
+:root {
+  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  color-scheme: light dark;
+  color: rgba(255, 255, 255, 0.87);
+  background-color: #242424;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  --off-black: hsl(0, 0%, 20%);
+  --off-white: hsl(0, 0%, 95%);
+}
+
+body{
+  display: flex;
+  
+
+  justify-content: center;
+  padding-top: 10px;
+
+}
+
+.page-container{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+}
+
+.header{
+  display: flex;
+  margin-top: 20px;
+  padding: 8px 12px;
+  box-shadow: 0 0 3px white;
+  border: 2px solid hsla(0, 0%, 85%, 0.888);
+  
+  
+  border-radius: 20px;
+
+
+}
+
+.wrapper{
+  display: flex;
+  margin-right: 20px;
+  font-size: 1.2rem;
+  align-items: center;
+  
+}
+
+.wrapper:has(.score){
+  background-color: hsla(0, 0%, 95%, 0.205);
+  padding: 6px 12px;
+  border-radius: 20px;
+ 
+
+}
+
+.wrapper p {
+  margin: 0;
+  margin-left: 10px;
+}
+
+.btn{
+  font-size: 1.1rem;
+  border-color: hsl(0, 0%, 95%);
+  box-shadow: 0 0 3px hsl(0, 0%, 95%);
+  cursor: pointer;
+}
+
+.btn:active{
+  border: 2px solid var(--off-white);
+  
+}
+
+.audio-btn{
+  border-radius: 50vw;
+  padding: 4px 8px;
+  background-color: var(--off-black);
+  
+}
+
+.audio-btn.mute{
+  color: hsl(0, 0%, 80%);
+  border: 2px solid hsl(0, 0%, 80%);
+  box-shadow: none;
+}
+
+.audio-btn:hover{
+  background-color: hsl(0, 0%, 35%);
+}
+
+.start-btn{
+  padding: 0px 8px;
+  border-radius: 20px;
+  background-color: dodgerblue;
+  text-shadow: 0 0 3px black;
+  font-weight: 500;
+}
+
+.start-btn:hover{
+  background-color: rgb(29, 157, 255);
+}
+
+
+.card-container{
+  display: grid;
+  grid-template-columns: repeat(4, 145px);
+  grid-template-rows: repeat(4, 155px);
+  padding: 2rem 0;
+  gap: 20px;
+  position: relative;
+  
+  
+}
+
+.game-overlay{
+  background-color: hsla(0, 0%, 35%, 0.886);
+  z-index: 2;
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 0 10px hsl(0, 0%, 20%);
+  border-radius: 20px;
+  width: 675px;
+  height: 715px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+ 
+}
+
+.game-overlay .tag {
+  font-size: 2.2rem;
+  
+  z-index: 3;
+}
+
+.card{
+  perspective: 1000px;
+  background-color: transparent;
+}
+
+
+.card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  transition: transform 0.8s;
+  transform-style: preserve-3d;
+}
+.card.flipped .card-inner {
+  transform: rotateY(180deg);
+}
+
+.card-front, .card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  -webkit-backface-visibility: hidden; /* Safari */
+  backface-visibility: hidden;
+}
+
+.card-front{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: hsla(0, 0%, 20%, 0.806);
+  box-shadow: 0 0 3px hsl(0, 0%, 80%);
+  cursor: pointer;
+  padding-top: 0.5rem;
+  transform: rotateY(180deg);
+  
+}
+
+.card-back{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: hsla(0, 0%, 27%, 0.806);
+  box-shadow: 0 0 3px hsl(0, 0%, 80%);
+  cursor: pointer;
+}
+
+
+
+.card-back:hover{
+  background-color: hsla(0, 0%, 38%, 0.806);
+}
+
+.card.hidden{
+  opacity: 0;
+  
+}
+
+.card.hidden .card-front, .card.hidden .card-back{
+  cursor: default;
+}
+
+@media screen and (max-width: 780px){
+  
+  
+.card-container{
+  grid-template-columns: repeat(4, 80px);
+  grid-template-rows: repeat(4, 85px);
+
+  gap: 15px;
+  position: relative;
+}
+
+.game-overlay{
+  width: 380px;
+  height: 400px;
+
+}
+
+.game-overlay .tag {
+  font-size: 1.8rem;
+
+}
+
+
+
+.card-front{
+
+  padding-top: 0.5rem;
+  position: relative;
+  
+}
+
+.card-front p{
+  position: absolute;
+  bottom: 0px;
+  margin: 0;
+  margin-bottom: 5px;
+}
+
+.card-front img{
+  height: 80%;
+
+}
+
+.card-back img{
+  height: 50%;
+  
+}
+
+}
+
+@media screen and (max-width: 420px){
+
+  .header{
+    margin-top: 20px;
+    padding: 6px 8px;
+
+  }
+  
+  .wrapper{
+    margin-right: 10px;
+    font-size: 1rem;
+    
+  }
+  
+  .wrapper:has(.score){
+    padding: 4px 8px;
+  }
+  
+  .wrapper p {
+    margin: 0;
+    margin-left: 5px;
+  }
+  
+  .btn{
+    font-size: 1rem;
+  }
+  
+
+  
+  .audio-btn{
+
+    padding: 4px 8px;
+    
+  }
+  
+
+  .start-btn{
+    padding: 0px 8px;
+
+  }
+
+
+
+  .card-container{
+    grid-template-columns: repeat(4, 70px);
+    grid-template-rows: repeat(4, 75px);
+  
+    column-gap: 10px;
+    row-gap: 15px;
+    position: relative;
+  }
+  
+  .game-overlay{
+    width: 315px;
+    height: 375px;
+  
+  }
+  
+  .game-overlay .tag {
+    font-size: 1.8rem;
+  
+  }
+  
+  
+  
+  .card-front{
+  
+    padding-top: 0.5rem;
+    position: relative;
+    
+  }
+  
+  .card-front p{
+    font-size: 0.9rem;
+    position: absolute;
+    bottom: 5px;
+    margin: 0;
+    margin-bottom: 0px;
+  }
+  
+  .card-front img{
+    height: 65%;
+  
+  }
+  
+  .card-back img{
+    height: 50%;
+    
+  }
+  
+
+}
